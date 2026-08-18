@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.next/
+.vinext/
+.wrangler/
+coverage/
+.env*
+npm-debug.log*
+.superpowers/
+.worktrees/
+tmp/
+.DS_Store
