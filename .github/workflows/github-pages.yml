@@ -43,7 +43,7 @@ jobs:
       - name: Add the GitHub Pages project path
         run: |
           node --input-type=module <<'NODE'
-          import { readdir, readFile, stat, writeFile } from "node:fs/promises";
+          import { readdir, readFile, writeFile } from "node:fs/promises";
           import path from "node:path";
 
           const root = path.resolve("dist/client");
@@ -56,13 +56,10 @@ jobs:
               else if (textExtensions.has(path.extname(entry.name))) {
                 let text = await readFile(filePath, "utf8");
                 text = text
-                  .replaceAll('"/_next/', '"/Portfolio/_next/')
-                  .replaceAll("'/_next/", "'/Portfolio/_next/")
-                  .replaceAll('href="/projects/', 'href="/Portfolio/projects/')
-                  .replaceAll('href="/#', 'href="/Portfolio/#')
-                  .replaceAll('href="/"', 'href="/Portfolio/"')
-                  .replaceAll('src="/', 'src="/Portfolio/')
-                  .replaceAll('url(/', 'url(/Portfolio/');
+                  .replace(/(["'])\/_next\//g, "$1/Portfolio/_next/")
+                  .replace(/(["'])\/projects\//g, "$1/Portfolio/projects/")
+                  .replace(/(src|href|imageSrcSet)=\"\/(?!Portfolio\/)/g, "$1=\"/Portfolio/")
+                  .replace(/url\(\/(?!Portfolio\/)/g, "url(/Portfolio/");
                 await writeFile(filePath, text);
               }
             }
