@@ -1,0 +1,56 @@
+name: Build GitHub Pages site
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - "index.html"
+      - "404.html"
+      - ".nojekyll"
+      - "_next/**"
+      - "projects/**"
+      - "favicon.svg"
+      - "file.svg"
+      - "globe.svg"
+      - "window.svg"
+      - "stella-jin-profile.png"
+      - "_headers"
+      - ".assetsignore"
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build static export
+        run: npm run build
+
+      - name: Publish static files to main
+        run: |
+          rm -rf _next projects index.html 404.html .nojekyll
+          cp -R dist/client/. .
+          touch .nojekyll
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f index.html 404.html .nojekyll _next projects favicon.svg file.svg globe.svg window.svg stella-jin-profile.png _headers .assetsignore
+          if git diff --cached --quiet; then
+            echo "No generated changes to publish"
+            exit 0
+          fi
+          git commit -m "Publish static site for GitHub Pages"
+          git push
