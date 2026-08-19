@@ -40,6 +40,37 @@ jobs:
       - name: Build static export
         run: npm run build
 
+      - name: Add the GitHub Pages project path
+        run: |
+          node --input-type=module <<'NODE'
+          import { readdir, readFile, stat, writeFile } from "node:fs/promises";
+          import path from "node:path";
+
+          const root = path.resolve("dist/client");
+          const textExtensions = new Set([".html", ".css", ".js", ".json", ".rsc"]);
+
+          async function visit(directory) {
+            for (const entry of await readdir(directory, { withFileTypes: true })) {
+              const filePath = path.join(directory, entry.name);
+              if (entry.isDirectory()) await visit(filePath);
+              else if (textExtensions.has(path.extname(entry.name))) {
+                let text = await readFile(filePath, "utf8");
+                text = text
+                  .replaceAll('"/_next/', '"/Portfolio/_next/')
+                  .replaceAll("'/_next/", "'/Portfolio/_next/")
+                  .replaceAll('href="/projects/', 'href="/Portfolio/projects/')
+                  .replaceAll('href="/#', 'href="/Portfolio/#')
+                  .replaceAll('href="/"', 'href="/Portfolio/"')
+                  .replaceAll('src="/', 'src="/Portfolio/')
+                  .replaceAll('url(/', 'url(/Portfolio/');
+                await writeFile(filePath, text);
+              }
+            }
+          }
+
+          await visit(root);
+          NODE
+
       - name: Publish static files to main
         run: |
           rm -rf _next projects index.html 404.html .nojekyll
