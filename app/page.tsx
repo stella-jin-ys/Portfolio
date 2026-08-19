@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
-import { BorderGlowCard } from "./components/BorderGlowCard";
-import { ClickSpark } from "./components/ClickSpark";
-import { ContactForm } from "./components/ContactForm";
-import { GradientText } from "./components/GradientText";
-import { HeroSection } from "./components/HeroSection";
-import { OptionWheel } from "./components/OptionWheel";
-import { ScrollFloatBlock } from "./components/ScrollFloatBlock";
-import { SplashCursor } from "./components/SplashCursor";
-import { TargetCursor } from "./components/TargetCursor";
+import { BorderGlowCard } from "./components/effects/BorderGlowCard";
+import { ClickSpark } from "./components/effects/ClickSpark";
+import { ContactForm } from "./components/forms/ContactForm";
+import { GradientText } from "./components/effects/GradientText";
+import { HeroSection } from "./components/sections/HeroSection";
+import { OptionWheel } from "./components/effects/OptionWheel";
+import { ScrollFloatBlock } from "./components/effects/ScrollFloatBlock";
+import { SplashCursor } from "./components/effects/SplashCursor";
+import { TargetCursor } from "./components/effects/TargetCursor";
 import { contacts, experience, pageContent, projects, skills, techStack } from "./portfolio-data";
 
 export const metadata: Metadata = {
