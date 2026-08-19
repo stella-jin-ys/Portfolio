@@ -35,7 +35,7 @@ export function HeroSection() {
       <div className="portrait-layout">
         <div className="portrait-brand">
           <figure className="hero-portrait">
-            <Image src="/stella-jin-profile.png" alt="Portrait of Stella Jin" width={308} height={461} priority />
+            <Image src="/stella-jin-profile.png" alt="Portrait of Stella Jin" width={308} height={461} priority unoptimized />
           </figure>
           <HeroActions />
         </div>
