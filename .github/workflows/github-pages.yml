@@ -47,7 +47,7 @@ jobs:
           touch .nojekyll
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -f index.html 404.html .nojekyll _next projects favicon.svg file.svg globe.svg window.svg stella-jin-profile.png _headers .assetsignore
+          git add -A
           if git diff --cached --quiet; then
             echo "No generated changes to publish"
             exit 0
