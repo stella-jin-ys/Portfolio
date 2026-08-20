@@ -82,14 +82,14 @@ export const projects = [
   },
   {
     title: "Financial Insights Platform",
-    demoHref: "/projects/financial-insights-platform",
+    demoHref: "https://www.myfindex.com/se/",
     year: "2026",
     summary: "Financial product features, business-logic refinements and an AI agent answering natural-language questions over account data.",
     tags: ["Vue", "Nuxt", "Express", "MongoDB", "OpenRouter"],
   },
   {
     title: "Enterprise AI Chatbot",
-    demoHref: "/projects/enterprise-ai-chatbot",
+    demoHref: "https://github.com/stella-jin-ys/AIchatbot",
     year: "2025",
     summary: "A scalable .NET chatbot with Azure OpenAI and multi-database retrieval across Cosmos DB, Azure SQL, File Storage and Elastic Search.",
     tags: ["C#", "ASP.NET Core", "Azure OpenAI", "Cosmos DB"],
