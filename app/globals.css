@@ -183,6 +183,14 @@ a { color: inherit; text-decoration: none; }
 .wheel-options a { transition: transform .55s cubic-bezier(.2, .9, .2, 1.35) var(--wheel-delay), opacity .28s ease var(--wheel-delay), background .2s ease; }
 .wheel-options a:hover, .wheel-options a:focus-visible { background: linear-gradient(135deg, rgba(168,244,206,.3), rgba(65,201,235,.26)); transform: rotate(var(--angle)) translateX(-102px) rotate(calc(var(--angle) * -1)) scale(1.1); }
 
+@media (pointer: fine) {
+  html,
+  body,
+  body * {
+    cursor: none !important;
+  }
+}
+
 @keyframes spark-pop { to { opacity: 0; transform: rotate(var(--angle)) translateY(34px) scaleY(.3); } }
 @keyframes nav-aurora { 0% { transform: translate3d(-15%,-5%,0) rotate(-8deg); } 100% { transform: translate3d(18%,8%,0) rotate(12deg); } }
 @keyframes gradient-text-shift { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
@@ -251,6 +259,11 @@ a { color: inherit; text-decoration: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html,
+  body,
+  body * {
+    cursor: auto !important;
+  }
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   .click-spark { display: none; }
   .skills-track { transform: none; }

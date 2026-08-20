@@ -181,6 +181,14 @@ test("ships the seven scoped React Bits-style motion refinements", async () => {
   assert.match(css, /@keyframes gradient-text-shift/);
 });
 
+test("scopes custom cursor suppression to fine pointers and restores cursor fallbacks", async () => {
+  const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
+
+  assert.match(css, /@media \(pointer: fine\) \{[\s\S]*html,\s*body,\s*body \* \{\s*cursor: none !important;/);
+  assert.match(css, /@media \(prefers-reduced-motion: reduce\) \{[\s\S]*html,\s*body,\s*body \* \{\s*cursor: auto !important;/);
+  assert.match(css, /@media \(pointer: coarse\) \{[\s\S]*\.cursor-target \{ cursor: pointer; \}/);
+});
+
 test("extends scroll float through About, Work, and Contact while preserving restored copy", async () => {
   const [page, data, block] = await Promise.all([
     readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
