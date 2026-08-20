@@ -10,3 +10,10 @@ npm-debug.log*
 .worktrees/
 tmp/
 .DS_Store
+
+# Generated production deployment output
+/_next/
+/index.html
+/index.rsc
+/404.html
+/projects/
