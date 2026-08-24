@@ -96,7 +96,7 @@ export const projects = [
   },
   {
     title: "Operations CRM Dashboard",
-    demoHref: "https://github.com/stella-jin-ys/Operations-crm-dashboard",
+    demoHref: "https://stella-jin-ys.github.io/operations-crm-dashboard/",
     year: "2023",
     summary: "Responsive logistics apps and store kiosks for a research facility, plus REST integrations and parameter-driven Cognos reporting.",
     tags: ["React", "Redux", "Material UI", "MySQL"],

@@ -47,11 +47,11 @@ test("renders about, project, and contact content from Stella's approved profile
   assert.match(html, /href="mailto:stella\.jin123@gmail\.com"/);
 });
 
-test("links the operations CRM project to its GitHub repository", async () => {
+test("links the operations CRM project to its live dashboard", async () => {
   const data = await readFile(new URL("../app/portfolio-data.ts", import.meta.url), "utf8");
 
   assert.match(data, /title: "Operations CRM Dashboard"/);
-  assert.match(data, /demoHref: "https:\/\/github\.com\/stella-jin-ys\/Operations-crm-dashboard"/);
+  assert.match(data, /demoHref: "https:\/\/stella-jin-ys\.github\.io\/operations-crm-dashboard\/"/);
   assert.doesNotMatch(data, /Asset Management Apps/);
 });
 
