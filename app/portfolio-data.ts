@@ -95,8 +95,8 @@ export const projects = [
     tags: ["C#", "ASP.NET Core", "Azure OpenAI", "Cosmos DB"],
   },
   {
-    title: "Asset Management Apps",
-    demoHref: "/projects/asset-management-apps",
+    title: "Operations CRM Dashboard",
+    demoHref: "https://github.com/stella-jin-ys/Operations-crm-dashboard",
     year: "2023",
     summary: "Responsive logistics apps and store kiosks for a research facility, plus REST integrations and parameter-driven Cognos reporting.",
     tags: ["React", "Redux", "Material UI", "MySQL"],
