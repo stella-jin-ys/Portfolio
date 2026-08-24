@@ -42,9 +42,17 @@ test("renders about, project, and contact content from Stella's approved profile
   assert.match(html, /Travel Budget AI Assistant/);
   assert.match(html, /Financial Insights Platform/);
   assert.match(html, /Enterprise AI Chatbot/);
-  assert.match(html, /Asset Management Apps/);
+  assert.match(html, /Operations CRM Dashboard/);
   assert.match(html, /Get in touch!/);
   assert.match(html, /href="mailto:stella\.jin123@gmail\.com"/);
+});
+
+test("links the operations CRM project to its GitHub repository", async () => {
+  const data = await readFile(new URL("../app/portfolio-data.ts", import.meta.url), "utf8");
+
+  assert.match(data, /title: "Operations CRM Dashboard"/);
+  assert.match(data, /demoHref: "https:\/\/github\.com\/stella-jin-ys\/Operations-crm-dashboard"/);
+  assert.doesNotMatch(data, /Asset Management Apps/);
 });
 
 test("ships the four requested accessible interaction components", async () => {
