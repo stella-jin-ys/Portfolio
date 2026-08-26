@@ -52,7 +52,7 @@ export default function Home() {
                 <div className="project-top"><h3>{project.title}</h3><span>{project.year}</span></div>
                 <p>{project.summary}</p>
                 <ul aria-label={`${project.title} technologies`}>{project.tags.map((tag) => <li key={tag}>{tag}</li>)}</ul>
-                <a className="project-action glow-surface cursor-target" href={project.demoHref}>View project <span aria-hidden="true">↗</span></a>
+                <a className="project-action glow-surface cursor-target" href={project.demoHref} target="_blank" rel="noreferrer noopener">View project <span aria-hidden="true">↗</span></a>
               </BorderGlowCard>
             </ScrollFloatBlock>
           ))}
