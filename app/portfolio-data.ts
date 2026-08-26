@@ -74,13 +74,6 @@ export const experience = [
 
 export const projects = [
   {
-    title: "Travel Budget AI Assistant",
-    demoHref: "/projects/travel-budget-ai-assistant",
-    year: "2026",
-    summary: "An AI-assisted travel planning experience that turns trip ideas into practical, budget-aware itineraries.",
-    tags: ["React", "TypeScript", "AI", "Responsive UI"],
-  },
-  {
     title: "Financial Insights Platform",
     demoHref: "https://www.myfindex.com/se/",
     year: "2026",
@@ -100,6 +93,13 @@ export const projects = [
     year: "2023",
     summary: "Responsive logistics apps and store kiosks for a research facility, plus REST integrations and parameter-driven Cognos reporting.",
     tags: ["React", "Redux", "Material UI", "MySQL"],
+  },
+  {
+    title: "Travel Budget AI Assistant",
+    demoHref: "/projects/travel-budget-ai-assistant",
+    year: "2026",
+    summary: "An AI-assisted travel planning experience that turns trip ideas into practical, budget-aware itineraries.",
+    tags: ["React", "TypeScript", "AI", "Responsive UI"],
   },
 ] as const;
 
