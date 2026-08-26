@@ -63,6 +63,14 @@ test("places Travel Budget AI Assistant last in the project list", async () => {
   assert.equal(projectsBlock.trim().endsWith('tags: ["React", "TypeScript", "AI", "Responsive UI"],\n  },\n] as const;'), true);
 });
 
+test("places Business Intelligent Workspace first and links to its live site", async () => {
+  const data = await readFile(new URL("../app/portfolio-data.ts", import.meta.url), "utf8");
+  const projectsBlock = data.slice(data.indexOf("export const projects"), data.indexOf("export const contacts"));
+
+  assert.match(projectsBlock, /title: "Business Intelligent Workspace"[\s\S]*demoHref: "https:\/\/commercepulse-retail-dashboard\.stella-jin123\.chatgpt\.site\/"/);
+  assert.ok(projectsBlock.indexOf('title: "Business Intelligent Workspace"') < projectsBlock.indexOf('title: "Financial Insights Platform"'));
+});
+
 test("ships the four requested accessible interaction components", async () => {
   const [wheel, spark, glass, glow, page, hero, css] = await Promise.all([
     readFile(new URL("../app/components/OptionWheel.tsx", import.meta.url), "utf8"),
