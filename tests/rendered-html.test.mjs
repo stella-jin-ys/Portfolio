@@ -71,6 +71,12 @@ test("places Business Intelligent Workspace first and links to its live site", a
   assert.ok(projectsBlock.indexOf('title: "Business Intelligent Workspace"') < projectsBlock.indexOf('title: "Financial Insights Platform"'));
 });
 
+test("opens every personal project link in a new tab", async () => {
+  const page = await readFile(new URL("../app/page.tsx", import.meta.url), "utf8");
+
+  assert.match(page, /className="project-action glow-surface cursor-target" href=\{project\.demoHref\} target="_blank" rel="noreferrer noopener"/);
+});
+
 test("ships the four requested accessible interaction components", async () => {
   const [wheel, spark, glass, glow, page, hero, css] = await Promise.all([
     readFile(new URL("../app/components/OptionWheel.tsx", import.meta.url), "utf8"),
@@ -134,7 +140,7 @@ test("uses scoped medium hover glow, project showcase links, and a seamless tech
   assert.equal((page.match(/className="skills-track-group"/g) ?? []).length, 2);
   assert.match(page, /className="skills-track"/);
   assert.match(page, /skill-card glow-surface/);
-  assert.match(page, /className="project-action glow-surface cursor-target" href=\{project\.demoHref\}>View project/);
+  assert.match(page, /className="project-action glow-surface cursor-target" href=\{project\.demoHref\} target="_blank" rel="noreferrer noopener">View project/);
   assert.doesNotMatch(hero, /glass-nav glow-surface|intro-panel glow-surface|current-panel glow-surface/);
   assert.doesNotMatch(page, /experience\.map\(\(item\) => <article className="glow-surface"/);
   assert.doesNotMatch(page, /<li className="glow-surface"/);
