@@ -74,6 +74,13 @@ export const experience = [
 
 export const projects = [
   {
+    title: "Business Intelligent Workspace",
+    demoHref: "https://commercepulse-retail-dashboard.stella-jin123.chatgpt.site/",
+    year: "2026",
+    summary: "A retail intelligence workspace for turning operational data into clear, actionable decisions.",
+    tags: ["React", "TypeScript", "Analytics", "Dashboard"],
+  },
+  {
     title: "Financial Insights Platform",
     demoHref: "https://www.myfindex.com/se/",
     year: "2026",
