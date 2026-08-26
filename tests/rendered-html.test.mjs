@@ -55,6 +55,14 @@ test("links the operations CRM project to its live dashboard", async () => {
   assert.doesNotMatch(data, /Asset Management Apps/);
 });
 
+test("places Travel Budget AI Assistant last in the project list", async () => {
+  const data = await readFile(new URL("../app/portfolio-data.ts", import.meta.url), "utf8");
+  const projectsBlock = data.slice(data.indexOf("export const projects"), data.indexOf("export const contacts"));
+
+  assert.match(projectsBlock, /Operations CRM Dashboard[\s\S]*Travel Budget AI Assistant/);
+  assert.equal(projectsBlock.trim().endsWith('tags: ["React", "TypeScript", "AI", "Responsive UI"],\n  },\n] as const;'), true);
+});
+
 test("ships the four requested accessible interaction components", async () => {
   const [wheel, spark, glass, glow, page, hero, css] = await Promise.all([
     readFile(new URL("../app/components/OptionWheel.tsx", import.meta.url), "utf8"),
