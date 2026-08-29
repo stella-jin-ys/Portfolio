@@ -77,6 +77,13 @@ test("opens every personal project link in a new tab", async () => {
   assert.match(page, /className="project-action glow-surface cursor-target" href=\{project\.demoHref\} target="_blank" rel="noreferrer noopener"/);
 });
 
+test("includes the Social Sport App project with its live link", async () => {
+  const data = await readFile(new URL("../app/portfolio-data.ts", import.meta.url), "utf8");
+
+  assert.match(data, /title: "Social Sport App- Sportship"/);
+  assert.match(data, /demoHref: "https:\/\/social-sport-app-sportship\.vercel\.app\/"/);
+});
+
 test("ships the four requested accessible interaction components", async () => {
   const [wheel, spark, glass, glow, page, hero, css] = await Promise.all([
     readFile(new URL("../app/components/OptionWheel.tsx", import.meta.url), "utf8"),

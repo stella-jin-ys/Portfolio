@@ -81,6 +81,13 @@ export const projects = [
     tags: ["React", "TypeScript", "Analytics", "Dashboard"],
   },
   {
+    title: "Social Sport App- Sportship",
+    demoHref: "https://social-sport-app-sportship.vercel.app/",
+    year: "2026",
+    summary: "A social sports experience for discovering activities, connecting with people, and staying active together.",
+    tags: ["React", "TypeScript", "Social", "Responsive UI"],
+  },
+  {
     title: "Financial Insights Platform",
     demoHref: "https://www.myfindex.com/se/",
     year: "2026",
