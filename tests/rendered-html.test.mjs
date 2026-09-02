@@ -39,7 +39,7 @@ test("renders about, project, and contact content from Stella's approved profile
 
   assert.match(html, /A blend of soft skills/);
   assert.match(html, /Full-stack Developer Intern/);
-  assert.match(html, /Travel Budget AI Assistant/);
+  assert.match(html, /AI budget travel planner/);
   assert.match(html, /Financial Insights Platform/);
   assert.match(html, /Enterprise AI Chatbot/);
   assert.match(html, /Operations CRM Dashboard/);
@@ -55,20 +55,18 @@ test("links the operations CRM project to its live dashboard", async () => {
   assert.doesNotMatch(data, /Asset Management Apps/);
 });
 
-test("places Travel Budget AI Assistant last in the project list", async () => {
+test("keeps AI budget travel planner before the remaining projects", async () => {
   const data = await readFile(new URL("../app/portfolio-data.ts", import.meta.url), "utf8");
   const projectsBlock = data.slice(data.indexOf("export const projects"), data.indexOf("export const contacts"));
 
-  assert.match(projectsBlock, /Operations CRM Dashboard[\s\S]*Travel Budget AI Assistant/);
-  assert.equal(projectsBlock.trim().endsWith('tags: ["React", "TypeScript", "AI", "Responsive UI"],\n  },\n] as const;'), true);
+  assert.match(projectsBlock, /title: "AI budget travel planner"[\s\S]*title: "Social Sport App- Sportship"/);
 });
 
-test("places Business Intelligent Workspace first and links to its live site", async () => {
+test("includes Business Intelligent Workspace with its live site link", async () => {
   const data = await readFile(new URL("../app/portfolio-data.ts", import.meta.url), "utf8");
   const projectsBlock = data.slice(data.indexOf("export const projects"), data.indexOf("export const contacts"));
 
   assert.match(projectsBlock, /title: "Business Intelligent Workspace"[\s\S]*demoHref: "https:\/\/commercepulse-retail-dashboard\.stella-jin123\.chatgpt\.site\/"/);
-  assert.ok(projectsBlock.indexOf('title: "Business Intelligent Workspace"') < projectsBlock.indexOf('title: "Financial Insights Platform"'));
 });
 
 test("opens every personal project link in a new tab", async () => {
@@ -82,6 +80,23 @@ test("includes the Social Sport App project with its live link", async () => {
 
   assert.match(data, /title: "Social Sport App- Sportship"/);
   assert.match(data, /demoHref: "https:\/\/social-sport-app-sportship\.vercel\.app\/"/);
+});
+
+test("orders the projects with Life management app first and AI budget travel planner second", async () => {
+  const data = await readFile(new URL("../app/portfolio-data.ts", import.meta.url), "utf8");
+  const projectsBlock = data.slice(data.indexOf("export const projects"), data.indexOf("export const contacts"));
+  const titles = [...projectsBlock.matchAll(/title: "([^"]+)"/g)].map((match) => match[1]);
+
+  assert.deepEqual(titles, [
+    "Life management app",
+    "AI budget travel planner",
+    "Social Sport App- Sportship",
+    "Financial Insights Platform",
+    "Enterprise AI Chatbot",
+    "Operations CRM Dashboard",
+    "Business Intelligent Workspace",
+  ]);
+  assert.match(projectsBlock, /title: "Life management app"[\s\S]*demoHref: "https:\/\/stella-jin-ys\.github\.io\/Life-management-app\/"/);
 });
 
 test("ships the four requested accessible interaction components", async () => {

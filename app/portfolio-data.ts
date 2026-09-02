@@ -74,11 +74,18 @@ export const experience = [
 
 export const projects = [
   {
-    title: "Business Intelligent Workspace",
-    demoHref: "https://commercepulse-retail-dashboard.stella-jin123.chatgpt.site/",
+    title: "Life management app",
+    demoHref: "https://stella-jin-ys.github.io/Life-management-app/",
     year: "2026",
-    summary: "A retail intelligence workspace for turning operational data into clear, actionable decisions.",
-    tags: ["React", "TypeScript", "Analytics", "Dashboard"],
+    summary: "A focused workspace for organizing everyday plans, routines, and personal priorities.",
+    tags: ["React", "TypeScript", "Productivity", "Responsive UI"],
+  },
+  {
+    title: "AI budget travel planner",
+    demoHref: "/projects/travel-budget-ai-assistant",
+    year: "2026",
+    summary: "An AI-assisted travel planning experience that turns trip ideas into practical, budget-aware itineraries.",
+    tags: ["React", "TypeScript", "AI", "Responsive UI"],
   },
   {
     title: "Social Sport App- Sportship",
@@ -109,11 +116,11 @@ export const projects = [
     tags: ["React", "Redux", "Material UI", "MySQL"],
   },
   {
-    title: "Travel Budget AI Assistant",
-    demoHref: "/projects/travel-budget-ai-assistant",
+    title: "Business Intelligent Workspace",
+    demoHref: "https://commercepulse-retail-dashboard.stella-jin123.chatgpt.site/",
     year: "2026",
-    summary: "An AI-assisted travel planning experience that turns trip ideas into practical, budget-aware itineraries.",
-    tags: ["React", "TypeScript", "AI", "Responsive UI"],
+    summary: "A retail intelligence workspace for turning operational data into clear, actionable decisions.",
+    tags: ["React", "TypeScript", "Analytics", "Dashboard"],
   },
 ] as const;
 
