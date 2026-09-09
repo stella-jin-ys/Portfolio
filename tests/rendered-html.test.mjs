@@ -60,6 +60,7 @@ test("keeps AI budget travel planner before the remaining projects", async () =>
   const projectsBlock = data.slice(data.indexOf("export const projects"), data.indexOf("export const contacts"));
 
   assert.match(projectsBlock, /title: "AI budget travel planner"[\s\S]*title: "Social Sport App- Sportship"/);
+  assert.match(projectsBlock, /title: "AI budget travel planner"[\s\S]*demoHref: "https:\/\/ai-travel-budget-planner\.stella-jin123\.chatgpt\.site\/"/);
 });
 
 test("includes Business Intelligent Workspace with its live site link", async () => {
@@ -170,7 +171,7 @@ test("uses scoped medium hover glow, project showcase links, and a seamless tech
   assert.match(form, /className="contact-form"/);
   assert.doesNotMatch(form, /<(?:input|textarea) className="glow-surface"/);
   assert.match(form, /form-submit glow-surface/);
-  assert.match(data, /demoHref: "\/projects\//);
+  assert.match(data, /demoHref: "https:\/\/ai-travel-budget-planner\.stella-jin123\.chatgpt\.site\/"/);
   assert.match(data, /Demo showcase coming soon/);
   assert.match(showcase, /pageContent\.showcase\.message/);
   assert.match(css, /@keyframes glow-spin/);

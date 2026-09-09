@@ -82,7 +82,7 @@ export const projects = [
   },
   {
     title: "AI budget travel planner",
-    demoHref: "/projects/travel-budget-ai-assistant",
+    demoHref: "https://ai-travel-budget-planner.stella-jin123.chatgpt.site/",
     year: "2026",
     summary: "An AI-assisted travel planning experience that turns trip ideas into practical, budget-aware itineraries.",
     tags: ["React", "TypeScript", "AI", "Responsive UI"],
